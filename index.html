@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Rohit Singh | Data Analyst</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --p:#7F77DD;--p2:#534AB7;--p3:#EEEDFE;
+    --t:#1D9E75;--t2:#0F6E56;--t3:#E1F5EE;
+    --a:#EF9F27;--a2:#BA7517;--a3:#FAEEDA;
+    --c:#D85A30;--c2:#993C1D;--c3:#FAECE7;
+    --pk:#D4537E;--pk2:#993556;--pk3:#FBEAF0;
+    --bg:#0d0d1a;--bg2:#13132b;--bg3:#1a1a35;
+    --txt:#f0f0ff;--txt2:#a0a0c0;--brd:rgba(127,119,221,0.2)
+  }
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,13,26,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--brd);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--t));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{color:var(--txt2);font-size:.9rem;transition:color .2s}
+  .nav-links a:hover{color:var(--txt)}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(127,119,221,0.15),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(29,158,117,0.1),transparent 60%);pointer-events:none}
+  .hero-content{position:relative;z-index:1}
+  .hero-badge{display:inline-block;background:var(--bg3);border:1px solid var(--brd);border-radius:50px;padding:.4rem 1.2rem;font-size:.8rem;color:var(--p);margin-bottom:1.5rem;letter-spacing:.05em}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1rem}
+  .hero h1 span{background:linear-gradient(135deg,var(--p),var(--pk),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero-sub{font-size:1.1rem;color:var(--txt2);max-width:500px;margin:0 auto 2.5rem}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;padding:.8rem 2rem;border-radius:50px;font-size:.95rem;font-weight:600;transition:opacity .2s;border:none;cursor:pointer}
+  .btn-primary:hover{opacity:.85}
+  .btn-outline{background:transparent;color:var(--txt);padding:.8rem 2rem;border-radius:50px;font-size:.95rem;font-weight:600;border:1px solid var(--brd);transition:border-color .2s;cursor:pointer}
+  .btn-outline:hover{border-color:var(--p)}
+  .hero-stats{display:flex;gap:2rem;justify-content:center;margin-top:3rem;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat-num{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--p),var(--t));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .stat-label{font-size:.75rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase}
+
+  /* SECTION */
+  section{padding:5rem 2rem}
+  .container{max-width:1000px;margin:0 auto}
+  .sec-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--p);font-weight:600;margin-bottom:.75rem}
+  .sec-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:1rem}
+  .sec-title span{background:linear-gradient(135deg,var(--p),var(--t));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,var(--p),var(--t));border-radius:3px;margin-bottom:3rem}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  @media(max-width:640px){.about-grid{grid-template-columns:1fr}}
+  .about-avatar{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pk),var(--a));display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:800;color:#fff;margin:0 auto 2rem;border:4px solid var(--brd)}
+  .about-text p{color:var(--txt2);line-height:1.8;margin-bottom:1rem}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
+  .skill-card{background:var(--bg2);border:1px solid var(--brd);border-radius:12px;padding:1rem;text-align:center;transition:border-color .2s,transform .2s}
+  .skill-card:hover{border-color:var(--p);transform:translateY(-3px)}
+  .skill-icon{font-size:1.8rem;margin-bottom:.5rem}
+  .skill-name{font-size:.85rem;font-weight:600;color:var(--txt)}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem;justify-content:center}
+  .tag{font-size:.65rem;background:var(--p3);color:var(--p2);padding:.2rem .5rem;border-radius:20px;font-weight:600}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;gap:1.5rem}
+  .proj-card{background:var(--bg2);border:1px solid var(--brd);border-radius:16px;padding:1.5rem 2rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+  .proj-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent,linear-gradient(180deg,var(--p),var(--t)))}
+  .proj-card:hover{border-color:var(--p);transform:translateX(4px)}
+  .proj-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+  .proj-title{font-size:1.1rem;font-weight:700;color:var(--txt)}
+  .proj-stack{display:flex;gap:.4rem;flex-wrap:wrap}
+  .stack-tag{font-size:.7rem;padding:.2rem .6rem;border-radius:20px;font-weight:700}
+  .tag-py{background:rgba(127,119,221,.15);color:#AFA9EC}
+  .tag-sql{background:rgba(29,158,117,.15);color:#5DCAA5}
+  .tag-pbi{background:rgba(239,159,39,.15);color:#EF9F27}
+  .proj-desc{color:var(--txt2);font-size:.9rem;line-height:1.7}
+  .proj-highlights{margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem}
+  .highlight{font-size:.82rem;color:var(--txt2);display:flex;align-items:flex-start;gap:.5rem}
+  .highlight::before{content:'▸';color:var(--p);flex-shrink:0;margin-top:.15rem}
+
+  /* ACHIEVEMENTS */
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+  .ach-card{background:var(--bg2);border:1px solid var(--brd);border-radius:16px;padding:1.5rem;transition:border-color .2s}
+  .ach-card:hover{border-color:var(--a)}
+  .ach-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--a3),rgba(239,159,39,.2));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;border:1px solid rgba(239,159,39,.3)}
+  .ach-title{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+  .ach-desc{font-size:.85rem;color:var(--txt2);line-height:1.6}
+
+  /* CONTACT */
+  .contact-section{background:linear-gradient(135deg,rgba(127,119,221,.08),rgba(29,158,117,.08));border:1px solid var(--brd);border-radius:24px;padding:3rem;text-align:center}
+  .contact-links{display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+  .contact-btn{display:flex;align-items:center;gap:.6rem;background:var(--bg2);border:1px solid var(--brd);border-radius:50px;padding:.8rem 1.5rem;font-size:.9rem;font-weight:600;transition:border-color .2s,transform .2s;cursor:pointer;color:var(--txt)}
+  .contact-btn:hover{transform:translateY(-2px)}
+  .contact-btn.linkedin:hover{border-color:#0A66C2;color:#0A66C2}
+  .contact-btn.github:hover{border-color:var(--p);color:var(--p)}
+  .contact-btn.email:hover{border-color:var(--c);color:var(--c)}
+  .contact-icon{width:20px;height:20px}
+
+  footer{text-align:center;padding:2rem;color:var(--txt2);font-size:.85rem;border-top:1px solid var(--brd)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">RS</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Open to Opportunities</div>
+    <h1>Hi, I'm <span>Rohit Singh</span></h1>
+    <p class="hero-sub">Data Analyst turning raw data into meaningful insights through Python, SQL, and compelling visualizations.</p>
+    <div class="hero-btns">
+      <a href="#projects"><button class="btn-primary">View Projects</button></a>
+      <a href="#contact"><button class="btn-outline">Get in Touch</button></a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Tools & Skills</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-label">Team Project</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="about-avatar">RS</div>
+      </div>
+      <div>
+        <div class="sec-label">About Me</div>
+        <h2 class="sec-title">Passionate about <span>data-driven</span> decisions</h2>
+        <div class="divider"></div>
+        <p style="color:var(--txt2);line-height:1.8;margin-bottom:1rem">I'm a Data Analyst with hands-on experience in end-to-end data analysis — from raw data wrangling to building interactive dashboards and extracting actionable insights.</p>
+        <p style="color:var(--txt2);line-height:1.8">I work with Python, SQL, and Power BI to help businesses understand their data. I've completed industrial training in AI & ML and have a strong foundation in statistics and data storytelling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-label">What I Use</div>
+    <h2 class="sec-title">Skills & <span>Tools</span></h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-tags"><span class="tag">Pandas</span><span class="tag">NumPy</span></div>
+        <div class="skill-tags"><span class="tag">Matplotlib</span><span class="tag">Seaborn</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">PostgreSQL</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Power BI</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📐</div>
+        <div class="skill-name">Statistics</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📗</div>
+        <div class="skill-name">Excel</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐙</div>
+        <div class="skill-name">GitHub</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-label">My Work</div>
+    <h2 class="sec-title">Featured <span>Projects</span></h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <div class="proj-card" style="--accent:linear-gradient(180deg,var(--p),var(--t))">
+        <div class="proj-header">
+          <div class="proj-title">E-Commerce Sales Data Analysis</div>
+          <div class="proj-stack">
+            <span class="stack-tag tag-py">Python</span>
+            <span class="stack-tag tag-sql">SQL</span>
+          </div>
+        </div>
+        <div class="proj-highlights">
+          <div class="highlight">Performed end-to-end data analysis on an e-commerce dataset using Python and SQL.</div>
+          <div class="highlight">Cleaned and processed raw data, wrote SQL queries to extract business insights.</div>
+          <div class="highlight">Identified top customers, revenue trends, and monthly sales patterns.</div>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--accent:linear-gradient(180deg,var(--a),var(--pk))">
+        <div class="proj-header">
+          <div class="proj-title">Credit Card Financial Dashboard</div>
+          <div class="proj-stack">
+            <span class="stack-tag tag-pbi">Power BI</span>
+          </div>
+        </div>
+        <div class="proj-highlights">
+          <div class="highlight">Built an interactive dashboard to track transactions, KPIs, and spending trends.</div>
+          <div class="highlight">Analyzed regional performance and identified high-value customer segments.</div>
+          <div class="highlight">Created KPIs to support data-driven business decision-making.</div>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--accent:linear-gradient(180deg,var(--t),var(--p))">
+        <div class="proj-header">
+          <div class="proj-title">Food Sales Data Analysis</div>
+          <div class="proj-stack">
+            <span class="stack-tag tag-py">Python</span>
+          </div>
+        </div>
+        <div class="proj-highlights">
+          <div class="highlight">Analyzed a delivery dataset to identify peak order times and city-wise demand patterns.</div>
+          <div class="highlight">Visualized trends using Matplotlib and Seaborn for clear data storytelling.</div>
+          <div class="highlight">Provided actionable insights to improve delivery efficiency and customer experience.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-label">Recognition</div>
+    <h2 class="sec-title">Achievements & <span>Training</span></h2>
+    <div class="divider"></div>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Industrial Training — AI & ML</div>
+        <div class="ach-desc">Completed an industrial training program focused on Artificial Intelligence and Machine Learning concepts and applications.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🤖</div>
+        <div class="ach-title">Handwritten Digit Recognition</div>
+        <div class="ach-desc">Developed a team project using Python and Streamlit in collaboration with New Era Infotech to recognize handwritten digits.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-section">
+      <div class="sec-label">Let's Connect</div>
+      <h2 class="sec-title">Get in <span>Touch</span></h2>
+      <p style="color:var(--txt2);max-width:450px;margin:.5rem auto 0">I'm open to data analyst roles, freelance projects, and collaborations. Let's build something data-driven together.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/rohitsingh13102003/" target="_blank">
+          <div class="contact-btn linkedin">
+            <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </div>
+        </a>
+        <a href="https://github.com/codewithrohitt" target="_blank">
+          <div class="contact-btn github">
+            <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </div>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&to=mrrohitmohit45@gmail.com" target="_blank">
+          <div class="contact-btn email">
+            <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            Email
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by Rohit Singh · Data Analyst</p>
+</footer>
+
+</body>
+</html>
